@@ -1,20 +1,22 @@
-import { MultiLangString } from '../types/language.type';
+import { BaseEntity } from '../types/base-entity';
+import { MultiLangString } from '../types/language-type';
 
-export interface Project {
-  id: number;
+export interface Project extends BaseEntity {
   title: MultiLangString;
   description: MultiLangString;
   gitRepoUrl: string;
   liveDemoUrl: string;
   technologies: string[];
   isShowcase: boolean;
+  detail: ProjectDetail | null;
 }
 
 export interface ProjectDetail extends Project {
+  tagline: MultiLangString;
   features: string[];
-  challenges: string[];
+  status: MultiLangString;
   frontend: string[];
   backend: string[];
   database: string[];
-  images: string[];
+  gallery?: { url: string; caption?: MultiLangString }[];
 }

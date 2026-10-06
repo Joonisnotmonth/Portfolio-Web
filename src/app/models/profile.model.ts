@@ -1,16 +1,21 @@
-import { MultiLangString } from '../types/language.type';
+import { MultiLangString } from '../types/language-type';
 
 export interface Profile {
-  name: MultiLangString;
+  firstName: MultiLangString;
   lastName: MultiLangString;
+  headline: string;
   description: MultiLangString;
   aboutMe: MultiLangString;
+
+  avatarUrl: string;
+  resumeUrl: MultiLangString;
+
   socialLinks: {
     github: string;
     linkedin: string;
     email: string;
-    tel: string;
   };
-  tags: string[];
+
+  highlightTags: string[];
   lastUpdated: Date;
 }
