@@ -2,7 +2,7 @@ import { BaseEntity } from '../types/base-entity';
 import { MultiLangString } from '../types/language-type';
 
 export interface WorkExperience extends BaseEntity {
-  role: MultiLangString;
+  role: string;
   company: MultiLangString;
   startDate: Date;
   endDate?: Date;

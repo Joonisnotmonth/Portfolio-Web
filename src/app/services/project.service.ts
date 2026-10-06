@@ -1,63 +1,144 @@
-import { ProjectDetail } from '../models/project.model';
+import { Project } from '../models/project.model';
 
-export const MOCK_PROJECT_DETAILS: ProjectDetail[] = [
+export const MOCK_PROJECTS: Project[] = [
   {
     id: 1,
+    order: 1,
+    isPublished: true,
+    createdAt: new Date('2026-01-01'),
+    updatedAt: new Date('2026-01-01'),
+
     title: {
-      th: 'ระบบบริหารจัดการร้านค้า E-Commerce',
-      en: 'E-Commerce Management System',
+      en: 'Taskii',
+      th: 'ระบบจัดการงาน Taskii',
     },
+
     description: {
-      th: 'ระบบหลังบ้านครบวงจรสำหรับจัดการสต็อกสินค้า คำสั่งซื้อ และแดชบอร์ดวิเคราะห์ยอดขายแบบเรียลไทม์',
-      en: 'All-in-one backend system for inventory management, orders, and real-time sales analytics dashboard.',
+      en: 'A full-stack task management system built with Angular and .NET.',
+      th: 'ระบบจัดการงานแบบ Full-stack พัฒนาด้วย Angular และ .NET',
     },
-    gitRepoUrl: 'https://github.com/username/ecommerce-backend-frontend',
-    liveDemoUrl: 'https://demo-ecommerce-shop.com',
-    technologies: ['Angular', '.NET Core', 'MongoDB', 'Tailwind CSS'],
+
+    gitRepoUrl: 'https://github.com/yourname/taskii',
+    liveDemoUrl: 'https://taskii-demo.vercel.app',
+
+    technologies: ['Angular', '.NET 8', 'PostgreSQL', 'Tailwind CSS'],
+
     isShowcase: true,
-    features: [
-      'ระบบ Authentication และ Role-based Authorization ด้วย JWT',
-      'ระบบจัดการสต็อกสินค้าพร้อมแจ้งเตือนสินค้าใกล้หมด',
-      'Dashboard แสดงสถิติยอดขายรายเดือนด้วยกราฟอินเทอร์แอกทีฟ',
-    ],
-    challenges: [
-      'การจัดการ High Concurrency ช่วง Flash Sale ที่มีคนเข้าใช้งานพร้อมกันจำนวนมาก',
-      'การออกแบบ MongoDB Schema ให้รองรับการค้นหาสินค้าและฟิลเตอร์ที่ซับซ้อนได้อย่างรวดเร็ว',
-    ],
-    frontend: ['Angular 18', 'TypeScript', 'Tailwind CSS', 'Chart.js'],
-    backend: ['.NET 8 Web API', 'Entity Framework (สำหรับบางส่วน)', 'MediatR (CQRS Pattern)'],
-    database: ['MongoDB'],
-    images: [
-      'https://images.unsplash.com/photo-1557821552-17105176678c?w=800',
-      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800',
-    ],
+
+    detail: {
+      id: 1,
+      order: 1,
+      isPublished: true,
+      createdAt: new Date('2026-01-01'),
+      updatedAt: new Date('2026-01-01'),
+
+      title: {
+        en: 'Taskii',
+        th: 'ระบบจัดการงาน Taskii',
+      },
+
+      description: {
+        en: 'A full-stack task management system built with Angular and .NET.',
+        th: 'ระบบจัดการงานแบบ Full-stack พัฒนาด้วย Angular และ .NET',
+      },
+
+      gitRepoUrl: 'https://github.com/yourname/taskii',
+      liveDemoUrl: 'https://taskii-demo.vercel.app',
+
+      technologies: ['Angular', '.NET 8', 'PostgreSQL', 'Tailwind CSS'],
+
+      isShowcase: true,
+
+      detail: null,
+
+      tagline: {
+        en: 'Manage tasks efficiently in one place.',
+        th: 'จัดการงานทั้งหมดได้อย่างมีประสิทธิภาพในที่เดียว',
+      },
+
+      features: ['Authentication', 'Task CRUD', 'Task Status Tracking', 'Dashboard'],
+
+      status: {
+        en: 'In Progress',
+        th: 'กำลังพัฒนา',
+      },
+
+      frontend: ['Angular 20', 'TypeScript', 'Tailwind CSS'],
+
+      backend: ['.NET 8 Web API', 'Entity Framework Core', 'JWT Authentication'],
+
+      database: ['PostgreSQL'],
+
+      gallery: [
+        {
+          url: '/images/taskii/dashboard.png',
+          caption: {
+            en: 'Dashboard Page',
+            th: 'หน้าแดชบอร์ด',
+          },
+        },
+        {
+          url: '/images/taskii/task-list.png',
+          caption: {
+            en: 'Task List',
+            th: 'รายการงาน',
+          },
+        },
+      ],
+    },
   },
+
   {
     id: 2,
+    order: 2,
+    isPublished: true,
+    createdAt: new Date('2026-02-01'),
+    updatedAt: new Date('2026-02-01'),
+
     title: {
-      th: 'แอปพลิเคชันจองคิวคลินิกออนไลน์',
-      en: 'Online Clinic Queue Booking App',
+      en: 'Personal Portfolio',
+      th: 'เว็บไซต์ Portfolio',
     },
+
     description: {
-      th: 'เว็บแอปพลิเคชันอำนวยความสะดวกในการจองคิวพบแพทย์ ดูประวัติการรักษา และแจ้งเตือนสถานะคิวแบบเรียลไทม์',
-      en: 'Web application for booking doctor appointments, viewing medical history, and real-time queue status notifications.',
+      en: 'A multilingual portfolio website showcasing projects and skills.',
+      th: 'เว็บไซต์ Portfolio รองรับหลายภาษา สำหรับแสดงผลงานและทักษะ',
     },
-    gitRepoUrl: 'https://github.com/username/clinic-queue-system',
-    liveDemoUrl: 'https://demo-clinic-queue.com',
-    technologies: ['Angular', '.NET Core', 'SignalR', 'MongoDB'],
+
+    gitRepoUrl: 'https://github.com/yourname/portfolio',
+    liveDemoUrl: 'https://portfolio-demo.vercel.app',
+
+    technologies: ['Angular', 'TypeScript', 'Tailwind CSS'],
+
     isShowcase: true,
-    features: [
-      'ระบบจองคิวออนไลน์เลือกแผนกและแพทย์ได้ตามต้องการ',
-      'ระบบแจ้งเตือนอัปเดตสถานะคิวแบบเรียลไทม์ผ่าน SignalR',
-      'ระบบออกใบนัดหมายและประวัติการรักษาดิจิทัล',
-    ],
-    challenges: [
-      'การทำ Real-time Notification ให้มีความเสถียรเมื่อมีผู้ป่วยจองคิวเข้ามาพร้อมกันหลายคน',
-      'การออกแบบโครงสร้างข้อมูลใน MongoDB ให้สอดคล้องกับ Time-series ของคิวหมอ',
-    ],
-    frontend: ['Angular', 'RxJS', 'Bootstrap'],
-    backend: ['.NET 8', 'SignalR Hub'],
-    database: ['MongoDB'],
-    images: ['https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800'],
+
+    detail: null,
+  },
+
+  {
+    id: 3,
+    order: 3,
+    isPublished: false,
+    createdAt: new Date('2026-03-01'),
+    updatedAt: new Date('2026-03-01'),
+
+    title: {
+      en: 'E-Commerce Dashboard',
+      th: 'แดชบอร์ดร้านค้าออนไลน์',
+    },
+
+    description: {
+      en: 'Admin dashboard for managing products and orders.',
+      th: 'ระบบหลังบ้านสำหรับจัดการสินค้าและคำสั่งซื้อ',
+    },
+
+    gitRepoUrl: '',
+    liveDemoUrl: '',
+
+    technologies: ['Angular', 'Chart.js', 'Firebase'],
+
+    isShowcase: false,
+
+    detail: null,
   },
 ];

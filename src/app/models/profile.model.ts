@@ -17,5 +17,5 @@ export interface Profile {
   };
 
   highlightTags: string[];
-  lastUpdated: Date;
+  updatedAt: Date;
 }
