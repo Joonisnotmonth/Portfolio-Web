@@ -5,8 +5,8 @@ export interface Education extends BaseEntity {
   degree: MultiLangString;
   institution: MultiLangString;
   field?: MultiLangString;
-  startDate: Date;
-  endDate?: Date;
+  startYear: number;
+  endYear?: number;
   gpa?: number;
   note?: MultiLangString;
 }

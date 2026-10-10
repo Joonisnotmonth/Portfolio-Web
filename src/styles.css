@@ -1,11 +1,71 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import 'tailwindcss';
+@import "@fortawesome/fontawesome-free/css/all.min.css";
+
+:root {
+  /* ───────────── PRIMARY (สีเน้น) ───────────── */
+  --primary:            oklch(78.5% 0.115 274.713);         /* indigo-300 */
+  --primary-hover:      oklch(87% 0.065 274.039);           /* indigo-200 */
+  --on-primary:         oklch(27.4% 0.006 286.033);              /* zinc-800 */
+ 
+  /* ───────────── BACKGROUND (สีพื้น) ───────────── */
+  --bg-bar:             oklch(27.4% 0.006 286.033);             /* zinc-800 — Header, Footer, แถบ sticky */
+  --bg-bar-alpha:       oklch(27.4% 0.006 286.033 / 0.90);      /* zinc-800/90 — Header แบบโปร่งแสง */
+  --bg-body:            oklch(27.4% 0.006 286.033);             /* zinc-800 — พื้น Body */
+  --bg-raised:          oklch(17.3% 0.004 286.033);             /* zinc-900 — การ์ดเมนูลอย, ภาพโปรเจกต์ */
+  --bg-raised-alpha:    oklch(17.3% 0.004 286.033 / 0.90);      /* zinc-900/90 — การ์ดเมนูแบบโปร่งแสง */
+  --bg-card:            oklch(27.4% 0.006 286.033);      /* white/5 — การ์ด, badge ทั่วไป */
+  --bg-card-hover:      rgba(255, 255, 255, 0.10);      /* white/10 */
+ 
+  /* ───────────── BORDER (เส้นขอบ) ───────────── */
+  --border:             rgba(255, 255, 255, 0.10);      /* white/10 — เส้นขอบทั่วไป */
+  --border-strong:      rgba(255, 255, 255, 0.15);      /* white/15 — สวิตช์ภาษา TH/EN */
+ 
+  /* ───────────── TEXT (ตัวอักษร) ───────────── */
+  --text:               oklch(96.7% 0.001 286.375);         /* zinc-100 — ตัวอักษรหลัก */
+  --text-muted:         oklch(70.8% 0 none);                /* neutral-200 — ตัวอักษรรอง, คำอธิบาย */
+  --text-subtle:        oklch(87% 0 none);                  /* neutral-300 — คำอธิบายย่อย */
+  --text-faint:         oklch(70.8% 0 none);                /* neutral-400 — ลิขสิทธิ์, ไอคอนลูกศร */
+  --text-secondary:     oklch(87% 0.065 274.039);         /* indigo-200 */
+}
 
 body{
-    font-family:'IBM Plex Sans Thai',sans-serif
+    font-family:'IBM Plex Sans Thai',sans-serif;
+    background: var(--bg-body);
+    color: var(--text);
 }
 
 html{
     scroll-behavior: smooth
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: var(--on-primary);
+}
+
+.btn-primary:hover {
+    background: var(--primary-hover);
+}
+
+.navbar {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+}
+ 
+.text-muted {
+    color: var(--text-muted);
+}
+
+.text-subtle {
+    color: var(--text-subtle);
+}
+
+.text-secondary {
+    color: var(--text-secondary);
+}
+
+.text-faint {
+    color: var(--text-faint);
 }

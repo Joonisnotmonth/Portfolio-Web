@@ -32,6 +32,7 @@ export class AchievementService {
           en: 'First Place',
         },
         skillsGained: ['JavaScript', 'Python'],
+        imageUrl: 'https://picsum.photos/seed/picsum/400/300',
         createdAt: new Date('2023-10-01'),
         updatedAt: new Date('2023-10-01'),
       },
@@ -82,6 +83,43 @@ export class AchievementService {
         createdAt: new Date('2021-08-20'),
         updatedAt: new Date('2021-08-20'),
       },
+      {
+        id: 4,
+        order: 4,
+        isPublished: true,
+        title: {
+          th: 'รางวัลชมเชย',
+          en: 'Honorable Mention',
+        },
+        issuer: {
+          th: 'องค์กรจัดประกวด',
+          en: 'Contest Organizer',
+        },
+        kind: 'competition',
+        date: '2020-11-10',
+        description: {
+          th: 'ได้รับรางวัลชมเชยในการประกวดนวัตกรรมเทคโนโลยี',
+          en: 'Received honorable mention in technology innovation contest',
+        },
+        result: {
+          th: 'ชมเชย',
+          en: 'Honorable Mention',
+        },
+        skillsGained: ['Innovation', 'Creativity'],
+        imageUrl: 'https://picsum.photos/seed/picsum2/400/300',
+        createdAt: new Date('2020-11-10'),
+        updatedAt: new Date('2020-11-10'),
+      },
     ];
+  }
+
+  getAchievmentKindLabel(kind: Achievement['kind'], lang: 'th' | 'en'): string {
+    const labels: Record<Achievement['kind'], { th: string; en: string }> = {
+      certificate: { th: 'ใบรับรอง', en: 'Certificate' },
+      competition: { th: 'การแข่งขัน', en: 'Competition' },
+      other: { th: 'อื่น ๆ', en: 'Other' },
+    };
+
+    return labels[kind][lang];
   }
 }
