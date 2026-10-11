@@ -1,1 +1,109 @@
-<p>projects works!</p>
+<main id="view-projects">
+  <section class="max-w-6xl mx-auto px-6 pt-28 pb-8">
+    <a
+      href="#/"
+      class="text-sm text-neutral-500 hover:text-indigo-400 transition"
+      data-i18n="back.home"
+      >← กลับหน้าแรก</a
+    >
+
+    <h1 class="mt-4 text-4xl font-bold" data-i18n="page.title">ผลงานทั้งหมด</h1>
+
+    <p class="mt-2 text-sm text-neutral-400" data-i18n="page.sub">
+      โปรเจกต์ที่ทำในรั้วมหาวิทยาลัย ช่วงฝึกงาน และงานส่วนตัว
+    </p>
+  </section>
+
+  <section class="max-w-6xl mx-auto px-6 py-10">
+    @if (projectsData.length > 0) {
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        @for (proj of projectsData; track proj) {
+          <article
+            class="group flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-neutral-900/40 transition hover:border-indigo-400/50"
+          >
+            <a
+              routerLink="/projects"
+              [queryParams]="{ open: proj.id }"
+              class="relative block aspect-video overflow-hidden bg-neutral-900"
+            >
+              @if (proj.gallery?.length) {
+                <img
+                  [src]="proj.gallery![0].url"
+                  alt=""
+                  loading="lazy"
+                  class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                />
+              } @else {
+                <div
+                  class="grid h-full w-full place-items-center bg-gradient-to-br from-neutral-900 to-neutral-800"
+                >
+                  <span class="text-5xl font-bold text-indigo-400/30">{{
+                    proj.title[currentLang]
+                  }}</span>
+                </div>
+              }
+              <span
+                class="absolute left-3 top-3 rounded-full bg-zinc-800 px-2.5 py-0.5 text-[11px] text-secondary backdrop-blur"
+              >
+                {{ proj.status[currentLang] }}
+              </span>
+            </a>
+
+            <div class="flex flex-1 flex-col p-5">
+              <h3 class="text-base font-semibold">{{ proj.title[currentLang] }}</h3>
+              <p class="mt-2 flex-1 text-xs leading-relaxed text-neutral-400">
+                {{ proj.tagline[currentLang] }}
+              </p>
+
+              <div class="mt-4 flex flex-wrap gap-1.5">
+                @for (t of proj.tech.slice(0, MAX_CHIPS); track t) {
+                  <span
+                    class="rounded border border-white/10 bg-white/5 px-2 py-0.5 text-[10px] text-neutral-400"
+                    >{{ t }}</span
+                  >
+                }
+                @if (proj.tech.length > MAX_CHIPS) {
+                  <span
+                    class="rounded border border-white/10 bg-white/5 px-2 py-0.5 text-[10px] text-neutral-400"
+                    >+{{ proj.tech.length - MAX_CHIPS }}
+                  </span>
+                }
+              </div>
+
+              <div
+                class="mt-5 flex flex-wrap items-center gap-3 border-t border-white/5 pt-3 text-xs"
+              >
+                <a
+                  routerLink="/projects"
+                  [queryParams]="{ open: proj.id }"
+                  class="font-semibold text-secondary hover:underline"
+                  >ดูรายละเอียด</a
+                >
+                @if (proj.liveDemoUrl) {
+                  <a
+                    [href]="proj.liveDemoUrl"
+                    target="_blank"
+                    rel="noopener"
+                    class="text-neutral-400 transition hover:text-white"
+                    >Live Demo ↗</a
+                  >
+                }
+                @if (proj.gitRepoUrl) {
+                  <a
+                    [href]="proj.gitRepoUrl"
+                    target="_blank"
+                    rel="noopener"
+                    class="text-neutral-400 transition hover:text-white"
+                    >GitHub ↗</a
+                  >
+                }
+              </div>
+            </div>
+          </article>
+        }
+      </div>
+    } @else {
+      <p class="text-center text-neutral-400" data-i18n="page.empty">ไม่มีผลงานที่จะแสดง</p>
+    }
+  </section>
+</main>

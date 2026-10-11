@@ -155,10 +155,13 @@ export class HomeComponent {
   }
 
   projects() {
-    this.projectsData = this.projectService.getProjects().map((p) => ({
-      ...p,
-      tech: [...new Set([...p.frontend, ...p.backend, ...p.database])],
-    }));
+    this.projectsData = this.projectService
+      .getProjects()
+      .filter((p) => p.isShowcase === true && p.isPublished === true)
+      .map((p) => ({
+        ...p,
+        tech: [...new Set([...p.frontend, ...p.backend, ...p.database])],
+      }));
   }
 
   achievements() {

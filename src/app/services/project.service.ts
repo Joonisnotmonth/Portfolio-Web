@@ -48,7 +48,7 @@ export class ProjectService {
             },
           },
         ],
-        gitRepoUrl: '',
+        gitRepoUrl: 'https://github.com/example/portfolio',
         liveDemoUrl: 'https://example.com/portfolio',
         createdAt: new Date('2024-01-01'),
         updatedAt: new Date('2024-01-01'),
@@ -65,7 +65,7 @@ export class ProjectService {
           th: 'ระบบจัดการงานที่ช่วยให้ทีมสามารถติดตามและจัดการงานได้อย่างมีประสิทธิภาพ',
           en: 'A task management system that helps teams track and manage tasks efficiently.',
         },
-        isShowcase: false,
+        isShowcase: true,
         tagline: {
           th: 'ระบบจัดการงานสำหรับทีม',
           en: 'Team Task Management System',
@@ -140,6 +140,50 @@ export class ProjectService {
         liveDemoUrl: 'https://example.com/note-app',
         createdAt: new Date('2024-03-01'),
         updatedAt: new Date('2024-03-01'),
+      },
+      {
+        id: 4,
+        order: 4,
+        isPublished: true,
+        title: {
+          th: 'ร้านค้าออนไลน์',
+          en: 'E-commerce Store',
+        },
+        description: {
+          th: 'ร้านค้าออนไลน์ที่ให้ผู้ใช้สามารถซื้อสินค้าและชำระเงินได้อย่างสะดวก',
+          en: 'An e-commerce store that allows users to browse products and make purchases conveniently.',
+        },
+        isShowcase: false,
+        tagline: {
+          th: 'ร้านค้าออนไลน์สำหรับผู้ใช้ทั่วไป',
+          en: 'Online Store for General Users',
+        },
+        features: [
+          'แสดงรายการสินค้าและรายละเอียดสินค้า',
+          'ระบบตะกร้าสินค้าและการชำระเงินออนไลน์',
+          'ระบบจัดการคำสั่งซื้อและสถานะการจัดส่ง',
+        ],
+        status: {
+          th: 'อยู่ระหว่างพัฒนา',
+          en: 'In Development',
+        },
+        frontend: ['Angular', 'TypeScript', 'Bootstrap'],
+        backend: ['Node.js', 'Express'],
+        database: ['MySQL'],
+        tools: ['Figma', 'Git', 'Stripe API'],
+        gallery: [
+          {
+            url: 'https://picsum.photos/seed/picsum/400/300',
+            caption: {
+              th: 'ภาพหน้าจอของร้านค้าออนไลน์',
+              en: 'Screenshot of the e-commerce store',
+            },
+          },
+        ],
+        gitRepoUrl: '',
+        liveDemoUrl: 'https://example.com/e-commerce',
+        createdAt: new Date('2024-04-01'),
+        updatedAt: new Date('2024-04-01'),
       },
     ];
   }
