@@ -27,7 +27,7 @@
   --text-muted:         oklch(70.8% 0 none);                /* neutral-200 — ตัวอักษรรอง, คำอธิบาย */
   --text-subtle:        oklch(87% 0 none);                  /* neutral-300 — คำอธิบายย่อย */
   --text-faint:         oklch(70.8% 0 none);                /* neutral-400 — ลิขสิทธิ์, ไอคอนลูกศร */
-  --text-secondary:     oklch(87% 0.065 274.039);         /* indigo-200 */
+  --text-secondary:     oklch(78.5% 0.115 274.713);         /* indigo-200 */
 }
 
 body{

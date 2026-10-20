@@ -47,6 +47,20 @@ export class ProjectService {
               en: 'Screenshot of the portfolio website',
             },
           },
+          {
+            url: 'https://picsum.photos/seed/picsum/400/300',
+            caption: {
+              th: 'ภาพหน้าจอของหน้าหลัก',
+              en: 'Screenshot of the portfolio website',
+            },
+          },
+          {
+            url: 'https://picsum.photos/seed/picsum/400/300',
+            caption: {
+              th: 'ภาพหน้าจอของหน้าโปรเจกต์',
+              en: 'Screenshot of the portfolio website',
+            },
+          },
         ],
         gitRepoUrl: 'https://github.com/example/portfolio',
         liveDemoUrl: 'https://example.com/portfolio',

@@ -107,3 +107,8 @@
     }
   </section>
 </main>
+
+<!-- Project Detail Modal -->
+@if (open(); as id) {
+  <app-project-detail [project]="projectsData.find((p) => p.id == id)" />
+}

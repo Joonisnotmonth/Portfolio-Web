@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, computed, inject, input } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
+
 import { ProjectService } from '../../services/project.service';
-import { RouterLink } from '@angular/router';
+import { ProjectDetailComponent } from './project-detail/project-detail';
 
 @Component({
-  imports: [RouterLink],
+  imports: [ProjectDetailComponent, RouterLink],
   standalone: true,
   selector: 'app-projects',
   styleUrl: './projects.css',
@@ -12,15 +14,21 @@ import { RouterLink } from '@angular/router';
 export class ProjectsComponent {
   constructor(private projectService: ProjectService) {}
 
-  ngOnInit() {
-    this.projects();
-    this.switchLang('th');
-  }
+  readonly open = input<string>();
+  readonly selectedProject = computed(() =>
+    this.projectsData?.find((p: any) => p.id === this.open()),
+  );
+
   currentLang: 'th' | 'en' = 'th';
   projectsData: any;
   techList: string[] = [];
 
   MAX_CHIPS = 4;
+
+  ngOnInit() {
+    this.projects();
+    this.switchLang('th');
+  }
 
   switchLang(lang: 'th' | 'en') {
     this.currentLang = lang;
