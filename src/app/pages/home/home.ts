@@ -1,13 +1,5 @@
-import {
-  afterNextRender,
-  AfterViewInit,
-  Component,
-  DestroyRef,
-  DOCUMENT,
-  inject,
-  signal,
-} from '@angular/core';
-import { CustomDatePipe } from '../../pipes/custom-date-pipe';
+import { afterNextRender, Component, DestroyRef, DOCUMENT, inject, signal } from '@angular/core';
+import { SHARED_IMPORTS } from '../../shared-imports';
 
 import { WorkExperienceService } from '../../services/work-experience.service';
 import { EducationService } from '../../services/education.service';
@@ -16,11 +8,12 @@ import { ProfileService } from '../../services/profile.service';
 import { AchievementService } from '../../services/achievement.service';
 import { Achievement, AchievementKind } from '../../models/achievement.model';
 import { MultiLangString } from '../../types/language-type';
+import { LanguageService } from '../../services/language.service';
 
 @Component({
   standalone: true,
   selector: 'app-home',
-  imports: [CustomDatePipe],
+  imports: [SHARED_IMPORTS],
   styleUrls: ['./home.css'],
   templateUrl: './home.html',
 })
@@ -35,7 +28,8 @@ export class HomeComponent {
     afterNextRender(() => this.initScrollSpy());
   }
 
-  currentLang: 'th' | 'en' = 'th';
+  // Language
+  languageService = inject(LanguageService);
 
   profileData: any;
   workExperiencesData: any;
@@ -61,7 +55,7 @@ export class HomeComponent {
     certificate: {
       icon: 'fa-graduation-cap',
       label: { th: 'ใบรับรอง', en: 'Certificate' },
-      bg: 'bg-indigo-200',
+      bg: 'bg-indigo-300',
       text: 'text-indigo-400',
     },
     competition: {
@@ -73,7 +67,7 @@ export class HomeComponent {
     other: {
       icon: 'fa-seedling',
       label: { th: 'กิจกรรม', en: 'Activity' },
-      bg: 'bg-lime-100',
+      bg: 'bg-lime-200',
       text: 'text-lime-400',
     },
   };
@@ -84,8 +78,10 @@ export class HomeComponent {
     this.educations();
     this.projects();
     this.achievements();
+  }
 
-    this.switchLang('th');
+  get currentLang() {
+    return this.languageService.currentLang();
   }
 
   initScrollSpy() {
@@ -140,10 +136,6 @@ export class HomeComponent {
     };
     const timer = setTimeout(unlock, 1500);
     window.addEventListener('scrollend', unlock, { once: true });
-  }
-
-  switchLang(lang: 'th' | 'en') {
-    this.currentLang = lang;
   }
 
   workExperiences() {

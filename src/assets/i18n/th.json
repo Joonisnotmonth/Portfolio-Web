@@ -1,0 +1,19 @@
+{
+  "COMMON":{
+    "SEE_ALL": "ดูทั้งหมด",
+    "NOW": "ปัจจุบัน"
+  },
+
+  "HOME": {
+    "TITLE": "หน้าแรก",
+    "WELCOME": "สวัสดี, ",
+    "UPDATE": "แก้ไขล่าสุด",
+    "ABOUT": "เกี่ยวกับฉัน",
+    "EXPERIENCES": "ประวัติการทำงาน",
+    "ACTIVITIES": "กิจกรรม",
+    "EDUCATION": "การศึกษา",
+    "PROJECT_SELECTED": "ผลงาน",
+    "SCROLL_DOWN": "เลื่อนดูประสบการณ์ทำงานและกิจกรรม",
+    "SEE_CERTIFICATE": "ดูใบรับรอง"
+  }
+}

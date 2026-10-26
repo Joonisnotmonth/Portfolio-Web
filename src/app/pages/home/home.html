@@ -9,12 +9,12 @@
 
       <div>
         <p class="text-secondary text-xs mb-2">
-          ● <span data-i18n="hero.status">แก้ไขล่าสุด</span>
+          ● <span data-i18n="hero.status">{{ 'HOME.UPDATE' | translate }}</span>
           {{ profileData?.updatedAt | customDate: 'date-month-year-time' }}
         </p>
 
         <h1 class="text-4xl md:text-5xl font-bold leading-tight">
-          <span data-i18n="hero.greet">สวัสดี, ผมชื่อ</span>
+          <span data-i18n="hero.greet">{{ 'HOME.WELCOME' | translate }}</span>
 
           <span class="text-secondary" data-i18n="hero.name">
             {{ profileData?.firstName[currentLang] }} {{ profileData?.lastName[currentLang] }}</span
@@ -61,13 +61,7 @@
               <span
                 class="block text-sm font-semibold group-hover:text-lime-200 transition"
                 data-i18n="nav.exp"
-                >เกี่ยวกับฉัน</span
-              >
-
-              <span
-                class="nav-sub block text-[11px] text-neutral-500 truncate"
-                data-i18n="nav.exp.sub"
-                >ข้อมูลส่วนตัว &amp; ผลงาน</span
+                >{{ 'HOME.ABOUT' | translate }}</span
               >
             </span>
 
@@ -91,13 +85,7 @@
               <span
                 class="block text-sm font-semibold group-hover:text-lime-200 transition"
                 data-i18n="nav.exp"
-                >ประสบการณ์ทำงาน</span
-              >
-
-              <span
-                class="nav-sub block text-[11px] text-neutral-500 truncate"
-                data-i18n="nav.exp.sub"
-                >ฝึกงาน &amp; งานจริง</span
+                >{{ 'HOME.EXPERIENCES' | translate }}</span
               >
             </span>
 
@@ -121,13 +109,7 @@
               <span
                 class="block text-sm font-semibold group-hover:text-lime-200 transition"
                 data-i18n="nav.act"
-                >กิจกรรม &amp; ใบรับรอง</span
-              >
-
-              <span
-                class="nav-sub block text-[11px] text-neutral-500 truncate"
-                data-i18n="nav.act.sub"
-                >ค่าย แข่งขัน คอร์ส</span
+                >{{ 'HOME.ACTIVITIES' | translate }}</span
               >
             </span>
 
@@ -144,7 +126,7 @@
     <div class="grid grid-cols-12 gap-10">
       <div id="about" class="col-span-12 md:col-span-6 scroll-mt-40">
         <h2 class="uppercase tracking-widest font-semibold mb-5" data-i18n="about.title">
-          เกี่ยวกับฉัน
+          {{ 'HOME.ABOUT' | translate }}
         </h2>
 
         <p class="text-neutral-400 text-sm leading-relaxed" data-i18n="about.desc">
@@ -152,7 +134,7 @@
         </p>
 
         <h3 class="mt-8 mb-3 uppercase tracking-widest font-semibold" data-i18n="about.edu">
-          การศึกษา
+          {{ 'HOME.EDUCATION' | translate }}
         </h3>
 
         <!-- Education -->
@@ -179,11 +161,11 @@
       <div class="col-span-12 md:col-span-6">
         <div class="flex items-center justify-between mb-5">
           <h2 class="uppercase tracking-widest font-semibold" data-i18n="proj.title">
-            ผลงานที่เลือกมา
+            {{ 'HOME.PROJECT_SELECTED' | translate }}
           </h2>
 
           <a href="/projects" class="text-xs text-lime-200 hover:underline" data-i18n="proj.all"
-            >ดูทั้งหมด →</a
+            >{{ 'COMMON.SEE_ALL' | translate }} →</a
           >
         </div>
 
@@ -236,7 +218,7 @@
     </div>
 
     <p class="mt-14 text-center text-xs text-muted animate-pulse" data-i18n="scroll.hint">
-      ↓ เลื่อนดูประสบการณ์ทำงานและกิจกรรม
+      <i class="fa-solid fa-arrow-down-long"></i> {{ 'HOME.SCROLL_DOWN' | translate }}
     </p>
   </section>
 
@@ -245,7 +227,9 @@
     id="experience"
     class="max-w-6xl mx-auto px-6 py-24 border-t border-white/10 scroll-mt-40"
   >
-    <h2 class="text-3xl font-bold mb-8" data-i18n="nav.exp">ประสบการณ์ทำงาน</h2>
+    <h2 class="text-3xl font-bold mb-8" data-i18n="nav.exp">
+      {{ 'HOME.EXPERIENCES' | translate }}
+    </h2>
 
     <div class="space-y-4">
       @for (exp of workExperiencesData; track exp.id) {
@@ -264,7 +248,7 @@
               @if (exp.endDate) {
                 {{ exp.endDate | customDate: 'month-year' }}
               } @else {
-                <span data-i18n="exp.1.present">ปัจจุบัน</span>
+                <span data-i18n="exp.1.present">{{ 'COMMON.NOW' | translate }}</span>
               }
             </p>
           </div>
@@ -297,7 +281,7 @@
 
   <!-- ACTIVITY -->
   <section id="activity" class="max-w-6xl mx-auto px-6 py-24 border-t border-white/10 scroll-mt-40">
-    <h2 class="text-3xl font-bold mb-8" data-i18n="nav.act">กิจกรรม &amp; ใบรับรอง</h2>
+    <h2 class="text-3xl font-bold mb-8" data-i18n="nav.act">{{ 'HOME.ACTIVITIES' | translate }}</h2>
     <div class="flex gap-2 h-[350px] max-md:flex-col max-md:h-auto">
       @for (a of achievementsData; track a.id) {
         <article
@@ -354,7 +338,7 @@
                     class="inline-block mt-3.5 px-3 py-1 rounded-full bg-zinc-950 text-xs font-semibold"
                     [class]="kind(a).text"
                   >
-                    ★ {{ a.result[currentLang] }}
+                    <i class="fa-solid fa-star"></i> {{ a.result[currentLang] }}
                   </p>
                 }
                 @if (a.description) {
@@ -376,7 +360,7 @@
                     rel="noopener"
                     class="inline-block mt-4 px-4 py-2 rounded-full bg-zinc-950 text-zinc-50 text-xs font-semibold no-underline"
                   >
-                    ดูใบรับรอง ↗
+                    {{ 'HOME.SEE_CERTIFICATE' | translate }} ↗
                   </a>
                 }
               </div>

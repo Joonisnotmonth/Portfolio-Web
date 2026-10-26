@@ -1,35 +1,38 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import { Pipe, PipeTransform, inject } from '@angular/core';
+import { LanguageService } from '../services/language.service';
+
+type DateFormat = 'month-year' | 'year' | 'date-month-year-time' | 'date-month-year';
 
 @Pipe({
   name: 'customDate',
   standalone: true,
+  pure: false, // สำคัญ: ให้คำนวณใหม่เมื่อภาษาเปลี่ยน
 })
 export class CustomDatePipe implements PipeTransform {
-  transform(
-    value: Date | string | null | undefined,
-    format: 'month-year' | 'year' | 'date-month-year-time' | 'date-month-year' = 'month-year',
-  ): string {
+  private languageService = inject(LanguageService);
+
+  transform(value: Date | string | null | undefined, format: DateFormat = 'month-year'): string {
     if (!value) return '';
+
     const date = new Date(value);
+    if (isNaN(date.getTime())) return '';
+
+    // th-TH = ปี พ.ศ. + เดือนไทย, en-US = ปี ค.ศ. + เดือนอังกฤษ
+    const locale = this.languageService.currentLang() === 'th' ? 'th-TH' : 'en-US';
 
     switch (format) {
       case 'year':
-        // ตัวอย่าง: 2026 (หรือ 2569 ถ้าใช้ th-TH)
-        return date.toLocaleDateString('th-TH', {
-          year: 'numeric',
-        });
+        return date.toLocaleDateString(locale, { year: 'numeric' });
 
       case 'date-month-year':
-        // ตัวอย่าง: 15 ตุลาคม 2569
-        return date.toLocaleDateString('th-TH', {
+        return date.toLocaleDateString(locale, {
           day: 'numeric',
           month: 'long',
           year: 'numeric',
         });
 
       case 'date-month-year-time':
-        // ตัวอย่าง: 15 ตุลาคม 2569, 14:30
-        return date.toLocaleDateString('th-TH', {
+        return date.toLocaleString(locale, {
           day: 'numeric',
           month: 'long',
           year: 'numeric',
@@ -39,8 +42,7 @@ export class CustomDatePipe implements PipeTransform {
 
       case 'month-year':
       default:
-        // ตัวอย่าง: ตุลาคม 2569
-        return date.toLocaleDateString('th-TH', {
+        return date.toLocaleDateString(locale, {
           month: 'long',
           year: 'numeric',
         });

@@ -1,0 +1,19 @@
+{
+  "COMMON": {
+    "SEE_ALL": "See All",
+    "NOW": "Present"
+  },
+
+  "HOME": {
+    "TITLE": "Home",
+    "WELCOME": "Hello, ",
+    "UPDATE": "Last Updated",
+    "ABOUT": "About Me",
+    "EXPERIENCES": "Work Experience",
+    "ACTIVITIES": "Activities",
+    "EDUCATION": "Education",
+    "PROJECT_SELECTED": "Projects",
+    "SCROLL_DOWN": "Scroll down to explore my work experience and activities",
+    "SEE_CERTIFICATE": "View Certificate"
+  }
+}
