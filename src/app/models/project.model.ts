@@ -9,7 +9,7 @@ export interface Project extends BaseEntity {
   liveDemoUrl?: string;
 
   tagline: MultiLangString;
-  features: string[];
+  features: MultiLangString[];
   status: MultiLangString;
   frontend: string[];
   backend: string[];

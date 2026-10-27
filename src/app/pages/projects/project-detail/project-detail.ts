@@ -1,6 +1,7 @@
 import { Component, computed, effect, inject, input, signal } from '@angular/core';
 import { Project } from '../../../models/project.model';
 import { Router } from '@angular/router';
+import { LanguageService } from '../../../services/language.service';
 
 @Component({
   imports: [],
@@ -20,8 +21,6 @@ export class ProjectDetailComponent {
       .filter((g) => g.items.length);
   });
 
-  currentLang: 'th' | 'en' = 'th';
-
   // Gallery
   readonly gallery = computed(() => this.project()?.gallery ?? []);
   readonly activeIndex = signal(0);
@@ -38,12 +37,11 @@ export class ProjectDetailComponent {
     });
   }
 
-  ngOnInit() {
-    this.switchLang('th');
-  }
+  // Language
+  languageService = inject(LanguageService);
 
-  switchLang(lang: 'th' | 'en') {
-    this.currentLang = lang;
+  get currentLang() {
+    return this.languageService.currentLang();
   }
 
   close() {

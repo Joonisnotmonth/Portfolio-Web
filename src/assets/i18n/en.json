@@ -1,7 +1,8 @@
 {
   "COMMON": {
     "SEE_ALL": "See All",
-    "NOW": "Present"
+    "NOW": "Present",
+    "BACK_HOME": "Back To Home Page"
   },
 
   "HOME": {
@@ -15,5 +16,10 @@
     "PROJECT_SELECTED": "Projects",
     "SCROLL_DOWN": "Scroll down to explore my work experience and activities",
     "SEE_CERTIFICATE": "View Certificate"
+  },
+
+  "PROJECT": {
+    "TITLE": "Projects",
+    "SUB_TITLE": "Projects from university, internships, and personal work"
   }
 }
