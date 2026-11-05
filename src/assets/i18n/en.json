@@ -5,6 +5,13 @@
     "BACK_HOME": "Back To Home Page"
   },
 
+  "CORE":{
+    "CTA_TITEL": "Still Here?",
+    "CTA_SUB_TITLE": "LET’S BUILD WHAT’S NEXT.",
+    "CTA_CONNECT": "Connect",
+    "FOOTER_RIGHTS": "All rights reserved."
+  },
+
   "HOME": {
     "TITLE": "Home",
     "WELCOME": "Hello, ",
