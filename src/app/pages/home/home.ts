@@ -9,6 +9,7 @@ import { AchievementService } from '../../services/achievement.service';
 import { Achievement, AchievementKind } from '../../models/achievement.model';
 import { MultiLangString } from '../../types/language-type';
 import { LanguageService } from '../../services/language.service';
+import { Router } from '@angular/router';
 
 @Component({
   standalone: true,
@@ -41,6 +42,7 @@ export class HomeComponent {
   private readonly sectionIds = ['about', 'experience', 'activity'];
   active = signal('about');
 
+  private readonly router = inject(Router);
   private doc = inject(DOCUMENT);
   private destroyRef = inject(DestroyRef);
   private locked = false;
@@ -170,5 +172,9 @@ export class HomeComponent {
 
   isOpen(a: Achievement) {
     return (this.openId() ?? this.achievementsData[0]?.id) === a.id;
+  }
+
+  goToProjects() {
+    this.router.navigate(['/projects']);
   }
 }

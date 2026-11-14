@@ -1,8 +1,11 @@
 <main id="view-projects">
   <section class="max-w-6xl mx-auto px-6 pt-28 pb-8">
-    <a href="#/" class="text-xs text-lime-200 hover:underline"
-      >← {{ 'COMMON.BACK_HOME' | translate }}</a
-    >
+    <a routerLink="/" class="group inline-flex items-center gap-2 text-sm text-rose-200">
+      <i class="fa-solid fa-arrow-left fa-xs transition-transform group-hover:-translate-x-1"></i>
+      <span class="group-hover:underline underline-offset-4">{{
+        'COMMON.BACK_HOME' | translate
+      }}</span>
+    </a>
 
     <h1 class="mt-4 text-4xl font-bold" data-i18n="page.title">
       {{ 'PROJECT.TITLE' | translate }}
@@ -84,7 +87,7 @@
                     target="_blank"
                     rel="noopener"
                     class="text-neutral-400 transition hover:text-white"
-                    >Live Demo ↗</a
+                    >Live Demo</a
                   >
                 }
                 @if (proj.gitRepoUrl) {
@@ -93,7 +96,7 @@
                     target="_blank"
                     rel="noopener"
                     class="text-neutral-400 transition hover:text-white"
-                    >GitHub ↗</a
+                    ><i class="fa-brands fa-github"></i> GitHub</a
                   >
                 }
               </div>

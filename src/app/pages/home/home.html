@@ -1,5 +1,6 @@
-<main id="view-home" class="main-content">
-  <section class="max-w-6xl mx-auto px-6 pt-32 pb-10">
+<main id="view-home" class="main-content max-w-6xl mx-auto px-4 lg:px-8">
+  <!-- Hero -->
+  <section class="pt-32">
     <div class="flex flex-col md:flex-row md:items-center gap-8">
       <img
         src="https://placehold.co/300x300/171717/7c86ff?text=SJ"
@@ -39,33 +40,38 @@
   <div id="nav-sentinel"></div>
 
   <!-- floating nav bar -->
-
-  <div id="navbar" class="sticky top-16 z-40 px-6 py-3 transition-all duration-300">
+  <div id="navbar" class="sticky top-16 z-40 py-3 transition-all duration-300">
     <div class="max-w-6xl mx-auto">
       <nav class="rounded-2xl navbar p-2">
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+        <div class="grid grid-cols-3 gap-2">
           <!-- About Me -->
           <button
             type="button"
             [attr.aria-current]="active() === 'about' ? 'true' : null"
             [attr.data-active]="active() === 'about'"
+            [attr.aria-label]="'HOME.ABOUT' | translate"
             (click)="goSection('about')"
-            class="nav-card group relative flex w-full items-center gap-3 rounded-xl px-4 py-3 text-left transition hover:bg-white/5 data-[active=true]:bg-white/10 data-[active=true]:ring-1 data-[active=true]:ring-indigo-200/40 after:absolute after:inset-x-5 after:bottom-1 after:h-0.5 after:rounded-full after:bg-indigo-200 after:opacity-0 after:transition data-[active=true]:after:opacity-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-indigo-200"
+            class="nav-card group relative flex w-full items-center justify-center md:justify-between gap-3 rounded-xl px-4 py-3 text-left transition hover:bg-white/5 data-[active=true]:bg-white/10 data-[active=true]:ring-1 data-[active=true]:ring-indigo-200/40 after:absolute after:inset-x-5 after:bottom-1 after:h-0.5 after:rounded-full after:bg-indigo-200 after:opacity-0 after:transition data-[active=true]:after:opacity-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-indigo-200"
           >
             <span
               class="grid place-items-center w-9 h-9 rounded-lg bg-indigo-300/10 text-lime-200 shrink-0"
-              ><i class="fa-solid fa-user"></i>
+            >
+              <i class="fa-solid fa-user"></i>
             </span>
 
-            <span class="min-w-0 flex-1">
+            <span class="hidden md:block min-w-0 flex-1">
               <span
                 class="block text-sm font-semibold group-hover:text-lime-200 transition"
                 data-i18n="nav.exp"
-                >{{ 'HOME.ABOUT' | translate }}</span
               >
+                {{ 'HOME.ABOUT' | translate }}
+              </span>
             </span>
 
-            <span class="nav-arrow text-neutral-600 group-hover:text-lime-200 transition">→</span>
+            <span
+              class="hidden md:inline nav-arrow text-neutral-600 group-hover:text-lime-200 transition"
+              >→</span
+            >
           </button>
 
           <!-- Experience -->
@@ -74,22 +80,27 @@
             (click)="goSection('experience')"
             [attr.aria-current]="active() === 'experience' ? 'true' : null"
             [attr.data-active]="active() === 'experience'"
-            class="nav-card group relative flex w-full items-center gap-3 rounded-xl px-4 py-3 text-left transition hover:bg-white/5 data-[active=true]:bg-white/10 data-[active=true]:ring-1 data-[active=true]:ring-indigo-200/40 after:absolute after:inset-x-5 after:bottom-1 after:h-0.5 after:rounded-full after:bg-indigo-200 after:opacity-0 after:transition data-[active=true]:after:opacity-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-indigo-200"
+            [attr.aria-label]="'HOME.EXPERIENCES' | translate"
+            class="nav-card group relative flex w-full items-center justify-center md:justify-between gap-3 rounded-xl px-4 py-3 text-left transition hover:bg-white/5 data-[active=true]:bg-white/10 data-[active=true]:ring-1 data-[active=true]:ring-indigo-200/40 after:absolute after:inset-x-5 after:bottom-1 after:h-0.5 after:rounded-full after:bg-indigo-200 after:opacity-0 after:transition data-[active=true]:after:opacity-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-indigo-200"
           >
             <span
               class="grid place-items-center w-9 h-9 rounded-lg bg-indigo-300/10 text-lime-200 shrink-0"
               ><i class="fa-solid fa-briefcase"></i>
             </span>
 
-            <span class="min-w-0 flex-1">
+            <span class="hidden md:block min-w-0 flex-1">
               <span
                 class="block text-sm font-semibold group-hover:text-lime-200 transition"
                 data-i18n="nav.exp"
-                >{{ 'HOME.EXPERIENCES' | translate }}</span
               >
+                {{ 'HOME.EXPERIENCES' | translate }}
+              </span>
             </span>
 
-            <span class="nav-arrow text-neutral-600 group-hover:text-lime-200 transition">→</span>
+            <span
+              class="hidden md:inline nav-arrow text-neutral-600 group-hover:text-lime-200 transition"
+              >→</span
+            >
           </button>
 
           <!-- Activity -->
@@ -98,22 +109,27 @@
             (click)="goSection('activity')"
             [attr.aria-current]="active() === 'activity' ? 'true' : null"
             [attr.data-active]="active() === 'activity'"
-            class="nav-card group relative flex w-full items-center gap-3 rounded-xl px-4 py-3 text-left transition hover:bg-white/5 data-[active=true]:bg-white/10 data-[active=true]:ring-1 data-[active=true]:ring-indigo-200/40 after:absolute after:inset-x-5 after:bottom-1 after:h-0.5 after:rounded-full after:bg-indigo-200 after:opacity-0 after:transition data-[active=true]:after:opacity-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-indigo-200"
+            [attr.aria-label]="'HOME.ACTIVITIES' | translate"
+            class="nav-card group relative flex w-full items-center justify-center md:justify-between gap-3 rounded-xl px-4 py-3 text-left transition hover:bg-white/5 data-[active=true]:bg-white/10 data-[active=true]:ring-1 data-[active=true]:ring-indigo-200/40 after:absolute after:inset-x-5 after:bottom-1 after:h-0.5 after:rounded-full after:bg-indigo-200 after:opacity-0 after:transition data-[active=true]:after:opacity-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-indigo-200"
           >
             <span
               class="grid place-items-center w-9 h-9 rounded-lg bg-indigo-300/10 text-lime-200 shrink-0"
               ><i class="fa-solid fa-award"></i
             ></span>
 
-            <span class="min-w-0 flex-1">
+            <span class="hidden md:block min-w-0 flex-1">
               <span
                 class="block text-sm font-semibold group-hover:text-lime-200 transition"
-                data-i18n="nav.act"
-                >{{ 'HOME.ACTIVITIES' | translate }}</span
+                data-i18n="nav.exp"
               >
+                {{ 'HOME.ACTIVITIES' | translate }}
+              </span>
             </span>
 
-            <span class="nav-arrow text-neutral-600 group-hover:text-lime-200 transition">→</span>
+            <span
+              class="hidden md:inline nav-arrow text-neutral-600 group-hover:text-lime-200 transition"
+              >→</span
+            >
           </button>
         </div>
       </nav>
@@ -121,9 +137,8 @@
   </div>
 
   <!-- ABOUT + PROJECTS -->
-
-  <section class="max-w-6xl mx-auto px-6 pt-10 pb-20">
-    <div class="grid grid-cols-12 gap-10">
+  <section class="py-16">
+    <div class="grid grid-cols-12 gap-6 sm:gap-10">
       <div id="about" class="col-span-12 md:col-span-6 scroll-mt-40">
         <h2 class="uppercase tracking-widest font-semibold mb-5" data-i18n="about.title">
           {{ 'HOME.ABOUT' | translate }}
@@ -159,32 +174,15 @@
 
       <!-- PROJECTS -->
       <div class="col-span-12 md:col-span-6">
-        <div class="flex items-center justify-between mb-5">
-          <h2 class="uppercase tracking-widest font-semibold" data-i18n="proj.title">
-            {{ 'HOME.PROJECT_SELECTED' | translate }}
-          </h2>
-
-          <a href="/projects" class="text-xs text-lime-200 hover:underline" data-i18n="proj.all"
-            >{{ 'COMMON.SEE_ALL' | translate }} →</a
-          >
-        </div>
+        <h2 class="uppercase tracking-widest font-semibold mb-5" data-i18n="proj.title">
+          {{ 'HOME.PROJECT_SELECTED' | translate }}
+        </h2>
 
         <div id="home-projects" class="space-y-3">
           @for (proj of projectsData; track proj) {
             <article
               class="group relative rounded-2xl border border-white/10 bg-white/5 p-5 transition duration-200 hover:-translate-y-0.5 hover:border-indigo-200/50 hover:bg-white/10 hover:shadow-lg hover:shadow-black/30 has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-indigo-200"
             >
-              <!-- มุมขวาบน: live demo (กดแยกได้) + ลูกศร "ดูเพิ่มเติม" (ตกแต่ง) -->
-              <div
-                class="pointer-events-none absolute right-4 top-4 z-10 flex items-center gap-3 text-sm text-zinc-400"
-              >
-                <i
-                  class="fa-solid fa-arrow-right text-zinc-500 transition group-hover:translate-x-0.5 group-hover:text-indigo-200"
-                  aria-hidden="true"
-                ></i>
-              </div>
-
-              <!-- ลิงก์หลัก: ขยายคลุมทั้งการ์ด → /projects แล้วเปิด modal ของโปรเจกต์นี้ -->
               <h3 class="pr-16 text-base font-semibold text-zinc-50">
                 <a
                   [href]="'/projects?open=' + proj.id"
@@ -213,6 +211,13 @@
               }
             </article>
           }
+          <button
+            type="button"
+            (click)="goToProjects()"
+            class="group font-bold text-sm w-full relative rounded-2xl border border-white/10 bg-white/5 p-2 transition duration-200 hover:-translate-y-0.5 hover:border-indigo-200/50 hover:bg-white/10 hover:shadow-lg hover:shadow-black/30 has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-indigo-200"
+          >
+            {{ 'COMMON.SEE_ALL' | translate }} →
+          </button>
         </div>
       </div>
     </div>
@@ -223,11 +228,8 @@
   </section>
 
   <!-- EXPERIENCE -->
-  <section
-    id="experience"
-    class="max-w-6xl mx-auto px-6 py-24 border-t border-white/10 scroll-mt-40"
-  >
-    <h2 class="text-3xl font-bold mb-8" data-i18n="nav.exp">
+  <section id="experience" class="pb-16 border-t border-white/10 scroll-mt-40">
+    <h2 class="text-3xl font-bold my-8" data-i18n="nav.exp">
       {{ 'HOME.EXPERIENCES' | translate }}
     </h2>
 
@@ -280,8 +282,8 @@
   </section>
 
   <!-- ACTIVITY -->
-  <section id="activity" class="max-w-6xl mx-auto px-6 py-24 border-t border-white/10 scroll-mt-40">
-    <h2 class="text-3xl font-bold mb-8" data-i18n="nav.act">{{ 'HOME.ACTIVITIES' | translate }}</h2>
+  <section id="activity" class="pb-16 border-t border-white/10 scroll-mt-40">
+    <h2 class="text-3xl font-bold my-8" data-i18n="nav.act">{{ 'HOME.ACTIVITIES' | translate }}</h2>
     <div class="flex gap-2 h-[350px] max-md:flex-col max-md:h-auto">
       @for (a of achievementsData; track a.id) {
         <article

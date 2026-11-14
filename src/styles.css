@@ -10,13 +10,14 @@
   --on-primary:         oklch(27.4% 0.006 286.033);              /* zinc-800 */
  
   /* ───────────── BACKGROUND (สีพื้น) ───────────── */
-  --bg-bar:             oklch(27.4% 0.006 286.033);             /* zinc-800 — Header, Footer, แถบ sticky */
-  --bg-bar-alpha:       oklch(27.4% 0.006 286.033 / 0.90);      /* zinc-800/90 — Header แบบโปร่งแสง */
+  --bg-bar:             oklch(21% 0.006 285.885);             /* zinc-900 — Header, Footer, แถบ sticky */
+  --bg-bar-alpha:       oklch(21% 0.006 285.885 / 0.70);      /* zinc-900/70 — Header แบบโปร่งแสง */
   --bg-body:            oklch(27.4% 0.006 286.033);             /* zinc-800 — พื้น Body */
   --bg-raised:          oklch(17.3% 0.004 286.033);             /* zinc-900 — การ์ดเมนูลอย, ภาพโปรเจกต์ */
   --bg-raised-alpha:    oklch(17.3% 0.004 286.033 / 0.90);      /* zinc-900/90 — การ์ดเมนูแบบโปร่งแสง */
   --bg-card:            oklch(27.4% 0.006 286.033);      /* white/5 — การ์ด, badge ทั่วไป */
   --bg-card-hover:      rgba(255, 255, 255, 0.10);      /* white/10 */
+  --bg-cta: 000;
  
   /* ───────────── BORDER (เส้นขอบ) ───────────── */
   --border:             rgba(255, 255, 255, 0.10);      /* white/10 — เส้นขอบทั่วไป */
@@ -40,6 +41,12 @@ html{
     scroll-behavior: smooth
 }
 
+/* Button */
+
+button{
+    cursor: pointer;
+}
+
 .btn-primary {
     background: var(--primary);
     color: var(--on-primary);
@@ -49,10 +56,7 @@ html{
     background: var(--primary-hover);
 }
 
-.navbar {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-}
+/* Text */
  
 .text-muted {
     color: var(--text-muted);
@@ -68,4 +72,18 @@ html{
 
 .text-faint {
     color: var(--text-faint);
+}
+
+/* Section */
+.navbar {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+}
+
+.bg-core {
+    background-color: var(--bg-bar);
+}
+
+.bg-core-alpha {
+    background-color: var(--bg-bar-alpha);
 }

@@ -2,7 +2,9 @@
   "COMMON":{
     "SEE_ALL": "ดูทั้งหมด",
     "NOW": "ปัจจุบัน",
-    "BACK_HOME": "กลับหน้าแรก"
+    "BACK_HOME": "กลับหน้าแรก",
+    "PAGE_TOP": "ไปข้างบน",
+    "Language": "ภาษา"
   },
 
   "CORE": {

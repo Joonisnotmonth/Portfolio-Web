@@ -14,4 +14,9 @@ export class FooterComponent {
   languageService = inject(LanguageService);
 
   year = new Date().getFullYear();
+  name = 'Yada Kruekkhoksung';
+
+  scrollToTop(): void {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 }

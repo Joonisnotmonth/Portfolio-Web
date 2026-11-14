@@ -2,12 +2,12 @@
   "COMMON": {
     "SEE_ALL": "See All",
     "NOW": "Present",
-    "BACK_HOME": "Back To Home Page"
+    "BACK_HOME": "Back To Home Page",
+    "PAGE_TOP": "Page Top",
+    "Language": "Language"
   },
 
   "CORE":{
-    "CTA_TITEL": "Still Here?",
-    "CTA_SUB_TITLE": "LET’S BUILD WHAT’S NEXT.",
     "CTA_CONNECT": "Connect",
     "FOOTER_RIGHTS": "All rights reserved."
   },

@@ -25,16 +25,18 @@
 
         <div class="min-h-0 flex-1 overflow-y-auto overscroll-contain">
           <article class="isolate px-5 pb-10 pt-6 sm:px-9">
-            <span
-              class="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-xs text-neutral-400"
-              >{{ p.status[currentLang] }}</span
-            >
-            <h1 class="mt-4 text-2xl font-bold leading-tight sm:text-3xl">
-              {{ p.title[currentLang] }}
-            </h1>
-            <p class="mt-3 text-sm leading-relaxed text-neutral-400">
-              {{ p.tagline[currentLang] }}
-            </p>
+            <div>
+              <span
+                class="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-xs text-neutral-400"
+                >{{ p.status[currentLang] }}</span
+              >
+              <h1 class="mt-4 text-2xl font-bold leading-tight sm:text-3xl">
+                {{ p.title[currentLang] }}
+              </h1>
+              <p class="mt-3 text-sm leading-relaxed text-neutral-400">
+                {{ p.tagline[currentLang] }}
+              </p>
+            </div>
 
             @if (p.liveDemoUrl || p.gitRepoUrl) {
               <div class="mt-5 flex flex-wrap gap-3">
@@ -59,97 +61,123 @@
               </div>
             }
 
-            <div class="mt-10 grid items-start gap-8 md:grid-cols-[1fr_300px]">
-              <div class="order-2 space-y-9 md:order-1">
-                <section>
-                  @if (gallery().length) {
-                    <div
-                      class="outline-none [--gap:0.5rem] [--slot:3.5rem] sm:[--gap:0.75rem] sm:[--slot:5rem]"
-                      tabindex="0"
-                      aria-label="Project gallery"
-                    >
-                      <div class="flex items-center gap-3 sm:gap-4">
-                        <!-- Image Focus -->
-                        <div
-                          class="relative aspect-video min-w-0 flex-1 overflow-hidden rounded-xl border border-white/10 bg-neutral-950"
-                        >
-                          @for (g of gallery(); track $index) {
-                            <img
-                              [src]="g.url"
-                              [alt]="g.caption?.[currentLang] ?? ''"
-                              [attr.loading]="$index === 0 ? 'eager' : 'lazy'"
-                              class="absolute inset-0 h-full w-full object-cover transition-opacity duration-500 motion-reduce:transition-none"
-                              [class.opacity-100]="$index === activeIndex()"
-                              [class.opacity-0]="$index !== activeIndex()"
-                            />
-                          }
-                        </div>
-
-                        <!-- right thumbnail -->
-                        @if (gallery().length > 1) {
-                          <div
-                            class="relative shrink-0"
-                            [style.width]="'calc(var(--slot) * 16 / 9)'"
-                          >
-                            <div
-                              class="overflow-hidden [-webkit-mask-image:linear-gradient(to_bottom,transparent,black_28%,black_72%,transparent)] [mask-image:linear-gradient(to_bottom,transparent,black_28%,black_72%,transparent)]"
-                              [style.height]="'calc(var(--slot) * 3 + var(--gap) * 2)'"
-                            >
-                              <div
-                                class="flex flex-col transition-transform duration-500 ease-out motion-reduce:transition-none"
-                                style="gap: var(--gap)"
-                                [style.transform]="railTransform()"
-                              >
-                                @for (g of gallery(); track $index) {
-                                  <button
-                                    type="button"
-                                    (click)="select($index)"
-                                    [attr.tabindex]="isNear($index) ? 0 : -1"
-                                    [attr.aria-hidden]="isNear($index) ? null : true"
-                                    [attr.aria-current]="$index === activeIndex() ? 'true' : null"
-                                    [attr.aria-label]="'Image ' + ($index + 1)"
-                                    class="relative shrink-0 overflow-hidden rounded-lg transition duration-100 hover:opacity-100 focus-visible:outline focus-visible:outline-2"
-                                    [class.opacity-100]="$index === activeIndex()"
-                                    [class.opacity-60]="$index !== activeIndex()"
-                                    style="height: var(--slot); width: calc(var(--slot) * 16 / 9)"
-                                  >
-                                    <img [src]="g.url" alt="" class="h-full w-full object-cover" />
-                                  </button>
-                                }
-                              </div>
-                            </div>
-
-                            <!-- ลูกศรขึ้น/ลง (ซ่อนเมื่อไม่มีรูปก่อนหน้า/ถัดไป) -->
-                            @if (hasPrev()) {
-                              <button
-                                type="button"
-                                (click)="prev()"
-                                aria-label="Previous image"
-                                class="absolute left-1/2 top-[calc(var(--slot)/2-0.75rem)] z-10 grid h-6 w-6 -translate-x-1/2 place-items-center text-white/80 drop-shadow transition hover:text-white"
-                              >
-                                <i class="fa-solid fa-chevron-up"></i>
-                              </button>
-                            }
-                            @if (hasNext()) {
-                              <button
-                                type="button"
-                                (click)="next()"
-                                aria-label="Next image"
-                                class="absolute bottom-[calc(var(--slot)/2-0.75rem)] left-1/2 z-10 grid h-6 w-6 -translate-x-1/2 place-items-center text-white/80 drop-shadow transition hover:text-white"
-                              >
-                                <i class="fa-solid fa-chevron-down"></i>
-                              </button>
-                            }
-                          </div>
+            <!--
+              Layout (ลำดับใน DOM = ลำดับบนมือถือ/tablet):
+                1. gallery   2. stack   3. about + features
+              จอ lg ขึ้นไป: ซ้าย = gallery + about/features, ขวา = stack (ครอบ 2 แถว)
+            -->
+            <div class="mt-8 grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_300px]">
+              <!-- 1. Gallery -->
+              @if (gallery().length) {
+                <section class="min-w-0 lg:col-start-1">
+                  <div
+                    class="outline-none [--gap:0.5rem] [--slot:3.5rem] sm:[--gap:0.75rem] sm:[--slot:5rem]"
+                    tabindex="0"
+                    aria-label="Project gallery"
+                  >
+                    <div class="flex items-center gap-3 sm:gap-4">
+                      <!-- Image Focus -->
+                      <div
+                        class="relative aspect-video min-w-0 flex-1 overflow-hidden rounded-xl border border-white/10 bg-neutral-950"
+                      >
+                        @for (g of gallery(); track $index) {
+                          <img
+                            [src]="g.url"
+                            [alt]="g.caption?.[currentLang] ?? ''"
+                            [attr.loading]="$index === 0 ? 'eager' : 'lazy'"
+                            class="absolute inset-0 h-full w-full object-cover transition-opacity duration-500 motion-reduce:transition-none"
+                            [class.opacity-100]="$index === activeIndex()"
+                            [class.opacity-0]="$index !== activeIndex()"
+                          />
                         }
                       </div>
 
-                      @if (currentCaption; as cap) {
-                        <p class="mt-2 text-xs text-muted">{{ cap }}</p>
+                      <!-- right thumbnail -->
+                      @if (gallery().length > 1) {
+                        <div class="relative shrink-0" [style.width]="'calc(var(--slot) * 16 / 9)'">
+                          <div
+                            class="overflow-hidden [-webkit-mask-image:linear-gradient(to_bottom,transparent,black_28%,black_72%,transparent)] [mask-image:linear-gradient(to_bottom,transparent,black_28%,black_72%,transparent)]"
+                            [style.height]="'calc(var(--slot) * 3 + var(--gap) * 2)'"
+                          >
+                            <div
+                              class="flex flex-col transition-transform duration-500 ease-out motion-reduce:transition-none"
+                              style="gap: var(--gap)"
+                              [style.transform]="railTransform()"
+                            >
+                              @for (g of gallery(); track $index) {
+                                <button
+                                  type="button"
+                                  (click)="select($index)"
+                                  [attr.tabindex]="isNear($index) ? 0 : -1"
+                                  [attr.aria-hidden]="isNear($index) ? null : true"
+                                  [attr.aria-current]="$index === activeIndex() ? 'true' : null"
+                                  [attr.aria-label]="'Image ' + ($index + 1)"
+                                  class="relative shrink-0 overflow-hidden rounded-lg transition duration-100 hover:opacity-100 focus-visible:outline focus-visible:outline-2"
+                                  [class.opacity-100]="$index === activeIndex()"
+                                  [class.opacity-60]="$index !== activeIndex()"
+                                  style="height: var(--slot); width: calc(var(--slot) * 16 / 9)"
+                                >
+                                  <img [src]="g.url" alt="" class="h-full w-full object-cover" />
+                                </button>
+                              }
+                            </div>
+                          </div>
+
+                          @if (hasPrev()) {
+                            <button
+                              type="button"
+                              (click)="prev()"
+                              aria-label="Previous image"
+                              class="absolute left-1/2 top-[calc(var(--slot)/2-0.75rem)] z-10 grid h-6 w-6 -translate-x-1/2 place-items-center text-white/80 drop-shadow transition hover:text-white"
+                            >
+                              <i class="fa-solid fa-chevron-up"></i>
+                            </button>
+                          }
+                          @if (hasNext()) {
+                            <button
+                              type="button"
+                              (click)="next()"
+                              aria-label="Next image"
+                              class="absolute bottom-[calc(var(--slot)/2-0.75rem)] left-1/2 z-10 grid h-6 w-6 -translate-x-1/2 place-items-center text-white/80 drop-shadow transition hover:text-white"
+                            >
+                              <i class="fa-solid fa-chevron-down"></i>
+                            </button>
+                          }
+                        </div>
                       }
                     </div>
-                  }
+
+                    @if (currentCaption; as cap) {
+                      <p class="mt-2 text-xs text-muted">{{ cap }}</p>
+                    }
+                  </div>
                 </section>
+              }
+
+              <!-- 2. Stack: tablet = แถบ 4 คอลัมน์ใต้รูป / lg = กล่องข้างขวา -->
+              <aside
+                class="rounded-xl border border-white/10 p-5 lg:col-start-2 lg:row-span-2 lg:row-start-1"
+              >
+                <h3 class="text-sm text-secondary">Stack</h3>
+                <div class="mt-4 grid grid-cols-2 gap-x-6 gap-y-5 md:grid-cols-4 lg:grid-cols-1">
+                  @for (g of stack(); track g.key) {
+                    <div>
+                      <p class="mb-2 text-sm text-subtle">{{ g.key }}</p>
+                      <div class="flex flex-wrap gap-1.5">
+                        @for (s of g.items; track s) {
+                          <span
+                            class="rounded border border-white/10 bg-white/5 px-2 py-0.5 text-xs text-neutral-400"
+                            >{{ s }}</span
+                          >
+                        }
+                      </div>
+                    </div>
+                  }
+                </div>
+              </aside>
+
+              <!-- 3. About + Features -->
+              <div class="min-w-0 space-y-9 lg:col-start-1">
                 <section>
                   <h2 class="mb-3 text-sm text-secondary">เกี่ยวกับโปรเจกต์</h2>
                   <p class="text-sm leading-relaxed text-neutral-300">
@@ -169,24 +197,6 @@
                   </ul>
                 </section>
               </div>
-
-              <!-- Stack -->
-              <aside class="order-1 space-y-5 rounded-xl border border-white/10 p-5 md:order-2">
-                <h3 class="text-sm text-secondary">Stack</h3>
-                @for (g of stack(); track g.key) {
-                  <div>
-                    <p class="mb-2 text-sm text-subtle">{{ g.key }}</p>
-                    <div class="flex flex-wrap gap-1.5">
-                      @for (s of g.items; track s) {
-                        <span
-                          class="rounded border border-white/10 bg-white/5 px-2 py-0.5 text-xs text-neutral-400"
-                          >{{ s }}</span
-                        >
-                      }
-                    </div>
-                  </div>
-                }
-              </aside>
             </div>
           </article>
         </div>
