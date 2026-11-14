@@ -9,6 +9,7 @@ import { AchievementService } from '../../services/achievement.service';
 import { Achievement, AchievementKind } from '../../models/achievement.model';
 import { MultiLangString } from '../../types/language-type';
 import { LanguageService } from '../../services/language.service';
+import { SeoService } from '../../services/seo.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -19,6 +20,8 @@ import { Router } from '@angular/router';
   templateUrl: './home.html',
 })
 export class HomeComponent {
+  private readonly seo = inject(SeoService);
+
   constructor(
     private workExperienceService: WorkExperienceService,
     private educationService: EducationService,
@@ -80,6 +83,15 @@ export class HomeComponent {
     this.educations();
     this.projects();
     this.achievements();
+
+    // SEO
+    this.seo.update({
+      title: 'Yada Kruekkhoksung — Portfolio',
+      description:
+        'Portfolio of Yada Kruekkhoksung — Frontend Developer focused on clean, fast, and accessible interfaces. React, Next.js, Angular, TypeScript.',
+      keywords:
+        'Yada Kruekkhoksung, Frontend Developer, Portfolio, React, Next.js, Angular, TypeScript, Tailwind CSS, Web Developer',
+    });
   }
 
   get currentLang() {

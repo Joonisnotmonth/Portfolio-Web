@@ -1,6 +1,7 @@
 import { Component, computed, inject, input } from '@angular/core';
 import { SHARED_IMPORTS } from '../../shared-imports';
 import { LanguageService } from '../../services/language.service';
+import { SeoService } from '../../services/seo.service';
 
 import { ProjectService } from '../../services/project.service';
 import { ProjectDetailComponent } from './project-detail/project-detail';
@@ -13,6 +14,8 @@ import { ProjectDetailComponent } from './project-detail/project-detail';
   templateUrl: './projects.html',
 })
 export class ProjectsComponent {
+  private readonly seo = inject(SeoService);
+
   constructor(private projectService: ProjectService) {}
 
   // Language
@@ -30,6 +33,15 @@ export class ProjectsComponent {
 
   ngOnInit() {
     this.projects();
+
+    // SEO
+    this.seo.update({
+      title: 'Projects',
+      description:
+        'Browse all projects by Yada Kruekkhoksung — web applications, tools, and experiments built with React, Angular, TypeScript, and more.',
+      keywords:
+        'Yada Kruekkhoksung, Projects, Web Development, React, Angular, TypeScript, Frontend Projects',
+    });
   }
 
   get currentLang() {
